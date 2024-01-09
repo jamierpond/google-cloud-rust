@@ -25,8 +25,8 @@ pub trait TokenSource: Send + Sync + Debug {
 
 pub(crate) fn default_http_client() -> reqwest::Client {
     reqwest::Client::builder()
+        .danger_accept_invalid_certs(true)
         .timeout(Duration::from_secs(3))
-        .use_rustls_tls()
         .build()
         .unwrap()
 }

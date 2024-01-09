@@ -365,8 +365,7 @@ mod test {
             .await
             .unwrap();
         println!("downloading={url:?}");
-        let result = self.http
-            .use_rustls_tls()
+        let result = reqwest::Client::default()
             .get(url)
             .header("content-type", content_type)
             .send()
